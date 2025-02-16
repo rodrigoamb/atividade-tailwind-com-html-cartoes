@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="flex items-center justify-center min-h-screen bg-gray-100 p-6">
-    <div class="bg-white shadow-md rounded-lg grid grid-cols-1 md:grid-cols-2">
+    <div class="bg-white shadow-md rounded-lg grid grid-cols-1 xl:grid-cols-2">
       <!-- Formulário de pagamento -->
       <div class="p-10">
         <h2 class="text-xl font-bold flex items-center gap-2">
@@ -17,9 +17,10 @@
           >
           Dados do seu Nu Cartão
         </h2>
-        <form class="mt-4 space-y-3">
+        <form class="mt-4 space-y-3" id="form-pagamento">
           <label class="block">Nome (conforme está no cartão):</label>
           <input
+            id="input-nome"
             type="text"
             name="nomeDoCartao"
             class="w-full p-2 border rounded"
@@ -29,6 +30,7 @@
           <label class="block">Número do cartão:</label>
           <input
             type="text"
+            id="input-numero-cartao"
             name="numeroDoCartao"
             class="w-full p-2 border rounded"
             placeholder="0000 0000 0000 0000"
@@ -38,6 +40,7 @@
             <div>
               <label>Mês:</label>
               <input
+                id="input-mes"
                 type="text"
                 name="mes"
                 class="w-full p-2 border rounded"
@@ -47,6 +50,7 @@
             <div>
               <label>Ano:</label>
               <input
+                id="input-ano"
                 type="text"
                 name="ano"
                 class="w-full p-2 border rounded"
@@ -56,6 +60,7 @@
             <div>
               <label>CCV:</label>
               <input
+                id="input-ccv"
                 type="text"
                 name="ccv"
                 class="w-full p-2 border rounded"
@@ -92,6 +97,7 @@
 
           <label class="block">CPF do titular do cartão:</label>
           <input
+            id="input-cpf"
             type="text"
             name="cpf"
             class="w-full p-2 border rounded"
@@ -100,6 +106,7 @@
 
           <label class="block">Endereço de cobrança:</label>
           <input
+            id="input-endereco"
             type="text"
             name="endereco"
             class="w-full p-2 border rounded"
@@ -110,6 +117,7 @@
             <div>
               <label>Número:</label>
               <input
+                id="input-numero-endereco"
                 type="text"
                 name="numero"
                 class="w-full p-2 border rounded"
@@ -118,6 +126,7 @@
             <div>
               <label>Complemento:</label>
               <input
+                id="input-complemento"
                 type="text"
                 name="complemento"
                 class="w-full p-2 border rounded"
@@ -128,12 +137,18 @@
           <div class="grid grid-cols-3 gap-2">
             <div>
               <label>CEP:</label>
-              <input type="text" name="cep" class="w-full p-2 border rounded" />
+              <input
+                type="text"
+                name="cep"
+                id="input-cep"
+                class="w-full p-2 border rounded"
+              />
             </div>
             <div>
               <label>Cidade:</label>
               <input
                 type="text"
+                id="input-cidade"
                 name="cidade"
                 class="w-full p-2 border rounded"
               />
@@ -142,6 +157,7 @@
               <label>Estado:</label>
               <input
                 type="text"
+                id="input-estado"
                 name="estado"
                 class="w-full p-2 border rounded"
               />
@@ -161,9 +177,10 @@
         class="flex flex-col justify-between items-center gap-10 bg-gray-800 p-10"
       >
         <div
-          class="bg-purple-600 text-white rounded-xl p-6 w-[550px] h-[340px] relative flex flex-col items-start justify-center"
+          class="bg-purple-600 text-white rounded-xl p-6 min-h-[340px] w-full max-w-[550px] relative flex flex-col items-start justify-center"
         >
           <img
+            id="bandeira-imagem"
             src="./assets/mastercard.png"
             alt="logo-mastercard"
             width="100px"
@@ -177,18 +194,35 @@
           />
           <div class="flex flex-row items-center justify-center gap-6">
             <img src="./assets/logo-nu.png" alt="logo-nubanks" width="80px" />
-            <p class="text-xl font-semibold">Nome do Comprador</p>
+            <p class="text-xl font-semibold" id="nome-exibicao">
+              Nome do comprador
+            </p>
           </div>
         </div>
 
-        <div class="bg-purple-600 rounded-xl w-[550px] h-[340px] relative">
+        <div
+          class="bg-purple-600 rounded-xl relative min-h-[340px] max-w-[550px] w-full"
+        >
           <div class="bg-gray-400 h-20 w-full mt-6"></div>
           <div class="p-6 flex flex-col gap-2 text-2xl text-white">
-            <p>Número: <span class="font-bold">XXXX XXXX XXXX XXXX</span></p>
             <p>
-              Validade: <span class="font-bold mr-8">XX/XX</span> CCV:
-              <span class="font-bold">XXX</span>
+              Número:
+              <span id="numero-cartao-exibicao">XXXX XXXX XXXX XXXX</span>
             </p>
+            <div class="flex flex-row gap-12">
+              <div>
+                <div>Validade:</div>
+                <div>
+                  <span id="mes-exibicao">XX</span>/<span id="ano-exibicao"
+                    >XX</span
+                  >
+                </div>
+              </div>
+              <div>
+                <div>CCV:</div>
+                <div id="ccv-exibicao">XXX</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
